@@ -48,7 +48,8 @@ class FieldValueValidator extends FieldTypeValidator
                 ];
             }
         } else {
-            $validationErrors = $fieldType->validateValue($fieldDefinition, $fieldValue);
+            $fieldSettings = property_exists($value, 'fieldSettings') ? $value->fieldSettings : null;
+            $validationErrors = $fieldType->validateValue($fieldDefinition, $fieldValue, $fieldSettings);
         }
 
         $this->processValidationErrors($validationErrors);
