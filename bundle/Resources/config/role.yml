@@ -172,6 +172,16 @@ services:
             - { name: ez.limitation.formMapper, limitationType: Language }
             - { name: ez.limitation.valueMapper, limitationType: Language }
 
+    ezrepoforms.limitation.form_mapper.newlanguage:
+        parent: ezrepoforms.limitation.form_mapper.multiple_selection
+        class: "%ezrepoforms.limitation.form_mapper.language.class%"
+        arguments: ["@ezpublish.api.service.language"]
+        calls:
+            - [setLogger, ['@?logger']]
+        tags:
+            - { name: ez.limitation.formMapper, limitationType: NewLanguage }
+            - { name: ez.limitation.valueMapper, limitationType: NewLanguage }
+
     ezrepoforms.limitation.form_mapper.owner:
         parent: ezrepoforms.limitation.form_mapper.multiple_selection
         class: "%ezrepoforms.limitation.form_mapper.owner.class%"
